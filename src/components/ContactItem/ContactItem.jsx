@@ -19,36 +19,42 @@ function ContactItem() {
                     }, [dispatch]);
 
     return (
-        <>
-            {visibleContacts.length > 0 && !error && (
+      <>
+            {contacts.length > 0 && !error && (
             <>
-                {visibleContacts.map(({id, name, phone}) => (
-                    <ListItem key={id}>
-                        <InfoContainer>
-                            <InfoItemContainer>
-                                <Data>{name}</Data>
-                            </InfoItemContainer>
-                            <InfoItemContainer>
-                                <Data>{phone}</Data>
-                            </InfoItemContainer>
-                        </InfoContainer>
-                        <DeleteBtn type="button" onClick={() => dispatch(deleteContact( id ))}>
-                            Delete contact
-                        </DeleteBtn>
-                    </ListItem>
-                ))}
+                    {visibleContacts.map(({ id, name, phone }) => {
+                        return (
+                           
+                            <ListItem key={id}>
+                                <InfoContainer>
+                                    <InfoItemContainer>
+                                        <Data>{name}</Data>
+                                    </InfoItemContainer>
+                                    <InfoItemContainer>
+                                        <Data>{phone}</Data>
+                                    </InfoItemContainer>
+                                </InfoContainer>
+                                <DeleteBtn type="button" onClick={() => dispatch(deleteContact(id))}>
+                                    Delete contact
+                                </DeleteBtn>
+                            </ListItem>
+                            
+                        );
+                    })}
             </>
             )}
+    
 
-            {!visibleContacts.length && !error && !isLoading && (
+          {!contacts.length && !error && !isLoading && (
                 <p>
                     Your phonebook is empty. Please add contact.
                 </p>
             )}
             
+            
             {error && error.message }
 
-        </>
+    </>
     );
 }
 

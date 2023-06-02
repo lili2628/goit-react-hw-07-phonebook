@@ -7,7 +7,7 @@ import  LoaderRing from 'components/LoaderRing';
 
 function ContactForm() {
   const [name, setName] = useState('');
-  const [number, setNumber] = useState('');
+  const [phone, setPhone] = useState('');
   const dispatch = useDispatch();
   const contacts = useSelector(getContacts);
   const isLoading = useSelector(getLoading);
@@ -17,12 +17,12 @@ function ContactForm() {
   };
 
   const onChangeNumber = e => {
-    setNumber(e.target.value);
+    setPhone(e.target.value);
   };
 
   const resetForm = () => {
     setName('');
-    setNumber(''); 
+    setPhone(''); 
   };
 
   const onSubmitForm = e => {
@@ -31,7 +31,7 @@ function ContactForm() {
     if (contacts.find(contact => contact.name.toLowerCase() === e.target.elements.name.value.toLowerCase())) {
       alert(`${e.target.elements.name.value} is already in contact`);
     } else {
-       dispatch(addContact({ name, number}));
+       dispatch(addContact({ name, phone}));
     };
 
     resetForm();
@@ -58,8 +58,8 @@ function ContactForm() {
             Number
             <FormInput
               type="tel"
-              name="number"
-              value={number}
+              name="phone"
+              value={phone}
               onChange={onChangeNumber}
               pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
               title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
