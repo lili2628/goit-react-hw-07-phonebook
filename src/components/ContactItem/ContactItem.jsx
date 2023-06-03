@@ -34,7 +34,6 @@ function ContactItem() {
                                     Delete contact
                                 </DeleteBtn>
                             </ListItem>
-                            
                         );
                     })}
                 </>
