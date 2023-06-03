@@ -5,7 +5,7 @@ import Filter from './Filter';
 import ContactList from './ContactList';
 import ContactItem from "./ContactItem";
 import { Container, Title, SubTitle, ContactContainer } from './App.styled';
-import { getContacts, getLoading } from 'store/selectors';
+import { getContacts} from 'store/selectors';
 import { fetchContacts } from 'store/operations';
 import { useDispatch } from 'react-redux';
 
