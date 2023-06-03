@@ -1,4 +1,3 @@
-
 import { ListItem, InfoContainer, InfoItemContainer, Data, DeleteBtn } from './ContactItem.styled';
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteContact } from 'store/operations';
@@ -12,19 +11,16 @@ function ContactItem() {
     const contacts = useSelector(getContacts);
     const isLoading = useSelector(getLoading);
     const error = useSelector(getError);
-
     const visibleContacts = contacts?.filter(contact => contact.name.toLowerCase().includes(normalizedFilter));
 
     useEffect(() => {dispatch(fetchContacts());
                     }, [dispatch]);
-
     return (
       <>
             {contacts.length > 0 && !error && (
-            <>
+                <>
                     {visibleContacts.map(({ id, name, phone }) => {
-                        return (
-                           
+                        return (     
                             <ListItem key={id}>
                                 <InfoContainer>
                                     <InfoItemContainer>
@@ -41,9 +37,8 @@ function ContactItem() {
                             
                         );
                     })}
-            </>
-            )}
-    
+                </>
+            )} 
 
           {!contacts.length && !error && !isLoading && (
                 <p>
